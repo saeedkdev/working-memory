@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import axios from 'axios';
+import Router, { useRouter } from 'next/router';
 
 function Home() {
 
@@ -37,6 +39,11 @@ function Home() {
     // log what the user types in the textarea to the console
     useEffect(() => {
         console.log(currentNote);
+        let token = localStorage.getItem("token");
+        if (token) {
+            console.log("You are logged in!");
+            console.log("Token: ", token);
+        }
     }, [currentNote]);
 
 
