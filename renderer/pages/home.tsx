@@ -43,7 +43,7 @@ function Home() {
   return (
     <React.Fragment>
         <Head>
-            <title>Workin Memory</title>
+            <title>Working Memory</title>
         </Head>
         <div className="grid grid-col-1 text-2xl w-full text-center p-5">
             <div className="flex flex-row justify-between"> 
