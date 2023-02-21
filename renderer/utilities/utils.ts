@@ -24,3 +24,23 @@ export function checkIfUserIsLoggedIn() : boolean {
     }
     return false;
 }
+
+// available commands enum
+export enum WMCommandEnum {
+    'todo' = 'todo',
+    'link' = 'link',
+    'reminder' = 'reminder',
+}
+
+interface WMCommand {
+    command: WMCommandEnum;
+}
+
+export function isCommandValid(command: string) : boolean {
+    return Object.values(WMCommandEnum).includes(command as WMCommandEnum);
+}
+
+export function logout() {
+    localStorage.removeItem('token');
+    Router.push('/login');
+}

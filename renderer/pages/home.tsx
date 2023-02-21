@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
-import { checkIfUserIsLoggedIn } from '../utilities/utils';
+import { checkIfUserIsLoggedIn, isCommandValid, logout } from '../utilities/utils';
 
 function Home() {
 
@@ -19,26 +19,22 @@ function Home() {
     // and clear the input
     const handleKeyDown = (e: any) => {
         if (e.key === 'Enter') {
-            console.log('enter pressed');
-            parseNoteText(e, currentNote);
+            parseNoteBlock(e, currentNote);
         }
     }
 
-    const parseNoteText = (e: any, text: string) => {
-        // if text has / at the beginning, it's a command
-        // otherwise, it's a note
+    const parseNoteBlock = (e: any, text: string) => {
         if (text[0] === '/') {
-            console.log('command');
-            // don't go to the next line
-            e.preventDefault();
-            setCurrentNote('');
-        }
-        else {
-            console.log('note');
+            let command = text.split(' ')[0].slice(1);
+            let isValid = isCommandValid(command);
+            if (isValid) { 
+                console.log('valid command');
+                e.preventDefault();
+                setCurrentNote('');
+            }
         }
     }
 
-    // log what the user types in the textarea to the console
     useEffect(() => {
         let isLoggedIn = checkIfUserIsLoggedIn();
         if(isLoggedIn) {
@@ -66,7 +62,7 @@ function Home() {
                         onChange={(e) => handleNoteChange(e.target.value)}
                         onKeyDown={handleKeyDown}
                         value={currentNote}
-                        className="w-full h-full text-sm text-note-text bg-transparent-gray 
+                        className="w-full text-sm text-note-text bg-transparent-gray 
                         focus:outline-none resize-none border-b 
                         border-gray-700 overflow-hidden">
                         </textarea>
@@ -74,6 +70,23 @@ function Home() {
                 </div>
                 <div className="flex flex-col w-2/12">
                     {/* sidebar */}
+                    {isLoggedIn ? (
+                        <div>
+                            <div className="flex flex-row justify-between">
+                                <div className="flex flex-col">
+                                    <button 
+                                    onClick={() => logout()}
+                                    className="rounded-full bg-dark-gray focus:outline-none text-sm ml-5 mb-5 p-2 px-5 text-note-text">
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
