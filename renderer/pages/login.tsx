@@ -37,8 +37,8 @@ function Login() {
             <Head>
                 <title>Login to Working Memory</title>
             </Head>
-            <div className="grid grid-col-1 text-2xl w-full p-5 justify-center">
-                <div className="flex flex-row justify-between"> 
+            <div className="grid grid-col-1 text-2xl w-full p-5 justify-center text-center">
+                <div className="flex flex-row justify-center"> 
                     {/* login form */}
                     <div className="flex flex-col w-10/12">
                         <div className="w-full bg-gradient-to-b from-dark-gray to-darkest-gray p-5 rounded-2xl h-40 min-h-full text-center">
