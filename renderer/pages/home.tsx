@@ -4,10 +4,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
+import { checkIfUserIsLoggedIn } from '../utilities/utils';
 
 function Home() {
 
     const [currentNote, setCurrentNote] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleNoteChange = (text: React.SetStateAction<string>) => {
         setCurrentNote(text);
@@ -38,11 +40,11 @@ function Home() {
 
     // log what the user types in the textarea to the console
     useEffect(() => {
-        console.log(currentNote);
-        let token = localStorage.getItem("token");
-        if (token) {
-            console.log("You are logged in at home!");
-            console.log("Token: ", token);
+        let isLoggedIn = checkIfUserIsLoggedIn();
+        if(isLoggedIn) {
+            setIsLoggedIn(true);
+        } else {
+            Router.push("/login");
         }
     }, [currentNote]);
 
@@ -69,6 +71,9 @@ function Home() {
                         border-gray-700 overflow-hidden">
                         </textarea>
                     </div>
+                </div>
+                <div className="flex flex-col w-2/12">
+                    {/* sidebar */}
                 </div>
             </div>
         </div>

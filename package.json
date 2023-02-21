@@ -11,6 +11,8 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/jwt-decode": "^3.1.0",
     "axios": "^1.3.3",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0"

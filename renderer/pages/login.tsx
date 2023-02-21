@@ -4,6 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
+import { checkIfUserIsLoggedIn } from '../utilities/utils';
+
 const apiEndpoint: string = process.env.API_ENDPOINT;
 
 
@@ -13,6 +15,7 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     let loginUrl = `${apiEndpoint}/login`;
 
@@ -34,6 +37,14 @@ function Login() {
             console.log("Error: ", error);
         });
     }
+
+    useEffect(() => {
+       let isLoggedIn = checkIfUserIsLoggedIn(); 
+       if(isLoggedIn) {
+           setIsLoggedIn(true);
+           Router.push("/home");
+       }
+    }, []);
 
     return (
         <React.Fragment>
