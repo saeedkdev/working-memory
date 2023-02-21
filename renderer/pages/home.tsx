@@ -63,8 +63,7 @@ function Home() {
                         onKeyDown={handleKeyDown}
                         value={currentNote}
                         className="w-full h-full text-sm text-note-text bg-transparent-gray 
-                        focus:outline-none resize-none border-b 
-                        border-gray-700 ">
+                        focus:outline-none resize-none scrollbar-thin scrollbar-thumb-dark-gray scrollbar-track-darkest-gray">
                         </textarea>
                     </div>
                 </div>
