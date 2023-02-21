@@ -42,7 +42,7 @@ function Login() {
                     {/* login form */}
                     <div className="flex flex-col w-10/12">
                         <div className="w-full bg-gradient-to-b from-dark-gray to-darkest-gray p-5 rounded-2xl h-40 min-h-full text-center">
-                            <img className="w-1/6 mx-auto mb-5" src="https://i.ibb.co/M9r4MWM/wm-logo.png" />
+                            <img className="w-1/4 mx-auto mb-5" src="https://i.ibb.co/cJKn7sF/wm-logo-v2.png" />
                             <input className="w-full h-10 rounded-2xl bg-dark-gray focus:outline-none text-sm mb-5 p-2 px-5 text-note-text text-center" type="text" placeholder="youremail@example.com" 
                             value={email} onChange={ e => setEmail(e.target.value) } 
                             onFocus={
