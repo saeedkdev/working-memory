@@ -62,9 +62,9 @@ function Home() {
                         onChange={(e) => handleNoteChange(e.target.value)}
                         onKeyDown={handleKeyDown}
                         value={currentNote}
-                        className="w-full text-sm text-note-text bg-transparent-gray 
+                        className="w-full h-full text-sm text-note-text bg-transparent-gray 
                         focus:outline-none resize-none border-b 
-                        border-gray-700 overflow-hidden">
+                        border-gray-700 ">
                         </textarea>
                     </div>
                 </div>
