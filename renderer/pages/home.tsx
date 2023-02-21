@@ -41,7 +41,7 @@ function Home() {
         console.log(currentNote);
         let token = localStorage.getItem("token");
         if (token) {
-            console.log("You are logged in!");
+            console.log("You are logged in at home!");
             console.log("Token: ", token);
         }
     }, [currentNote]);

@@ -4,14 +4,17 @@ import Head from 'next/head';
 import Link from 'next/link';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
+const apiEndpoint: string = process.env.API_ENDPOINT;
+
 
 function Login() {
+
+    // load process.env variables
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const apiEndpoint = process.env.API_ENDPOINT;
-    console.log("API endpoint: ", apiEndpoint);
+    let loginUrl = `${apiEndpoint}/login`;
 
     function logMeIn() {
         let loginData = {
@@ -19,7 +22,7 @@ function Login() {
             password: password
         }
         console.log("You requested to login with the following data: ", loginData);
-        axios.post('http://localhost:3000/login', loginData).then((response) => {
+        axios.post(`${apiEndpoint}/login`, loginData).then((response) => {
             console.log("Response from the server: ", response);
             if(response.status == 200) {
                 let token = response.data;
